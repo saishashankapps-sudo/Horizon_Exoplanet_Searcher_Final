@@ -1,0 +1,2 @@
+planet_name,host_star,discovery_year,discovery_method,orbital_period_days,radius_earth,mass_earth,distance_pc,equilibrium_temp_k
+Example Planet,Example Star,2020,Transit,12.345,1.10,1.20,25.500,300

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/png">
+    <title>Add Exoplanet | Horizon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+<div class="stars"></div>
+
+<nav class="navbar">
+    <a href="/" class="brand-link">
+        <div class="brand">
+            <div class="brand-icon">🪐</div>
+            <div>
+                <h1>HORIZON</h1>
+                <span>EXOPLANET SEARCHER</span>
+            </div>
+        </div>
+    </a>
+
+    <div class="nav-links">
+        <a href="/">Explore</a>
+    </div>
+</nav>
+
+<main class="form-page">
+
+    <div class="form-page-heading">
+        <p class="section-label">DATABASE MANAGEMENT</p>
+        <h2>Add an exoplanet</h2>
+        <p>Add a new record to the Horizon database.</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="messages">
+                {% for category, message in messages %}
+                    <div class="message {{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <section class="crud-panel">
+
+        <form method="POST" class="crud-form">
+
+            <div class="form-section-title">Basic Information</div>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="planet_name">Planet Name *</label>
+                    <input
+                        type="text"
+                        id="planet_name"
+                        name="planet_name"
+                        placeholder="e.g. Kepler-22 b"
+                        required
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="host_star">Host Star</label>
+                    <input
+                        type="text"
+                        id="host_star"
+                        name="host_star"
+                        placeholder="e.g. Kepler-22"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="discovery_year">Discovery Year</label>
+                    <input
+                        type="number"
+                        id="discovery_year"
+                        name="discovery_year"
+                        placeholder="e.g. 2011"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="discovery_method">Discovery Method</label>
+                    <select id="discovery_method" name="discovery_method">
+                        <option value="">Select method</option>
+                        {% for method in methods %}
+                            <option value="{{ method }}">{{ method }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-section-title">Planetary Properties</div>
+
+            <div class="form-grid">
+
+                <div class="field">
+                    <label for="orbital_period_days">Orbital Period (days)</label>
+                    <input
+                        type="number"
+                        step="any"
+                        id="orbital_period_days"
+                        name="orbital_period_days"
+                        placeholder="e.g. 365.25"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="radius_earth">Radius (Earth)</label>
+                    <input
+                        type="number"
+                        step="any"
+                        id="radius_earth"
+                        name="radius_earth"
+                        placeholder="e.g. 1.00"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="mass_earth">Mass (Earth)</label>
+                    <input
+                        type="number"
+                        step="any"
+                        id="mass_earth"
+                        name="mass_earth"
+                        placeholder="e.g. 1.00"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="distance_pc">Distance (pc)</label>
+                    <input
+                        type="number"
+                        step="any"
+                        id="distance_pc"
+                        name="distance_pc"
+                        placeholder="e.g. 12.50"
+                    >
+                </div>
+
+                <div class="field">
+                    <label for="equilibrium_temp_k">Equilibrium Temperature (K)</label>
+                    <input
+                        type="number"
+                        step="any"
+                        id="equilibrium_temp_k"
+                        name="equilibrium_temp_k"
+                        placeholder="e.g. 288"
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-note">
+                Fields marked with * are required.
+            </div>
+
+            <div class="form-actions">
+                <a href="/" class="secondary-button">Cancel</a>
+                <button type="submit" class="primary-button">Add Exoplanet</button>
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+    <div>
+        <strong>🪐 HORIZON</strong>
+        <span>Exoplanet Searcher</span>
+    </div>
+    <p>CBSE Class 12 Computer Science Project</p>
+</footer>
+
+</body>
+</html>

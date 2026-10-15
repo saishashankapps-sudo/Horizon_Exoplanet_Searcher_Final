@@ -1,0 +1,30 @@
+1. Keep your existing real data/exoplanets.csv and nasa_raw.csv.
+   The sample exoplanets.csv in this package is only a placeholder.
+
+2. In VS Code terminal:
+   cd /path/to/Horizon_Exoplanet_Searcher
+   python3 -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+
+3. Configure MySQL password:
+   export HORIZON_DB_PASSWORD="YOUR_MYSQL_PASSWORD"
+
+4. Create the database/table:
+   mysql -u root -p < sql/schema.sql
+
+5. If needed, clean/import your real CSV:
+   python clean_csv.py
+   python import_csv.py
+
+6. Verify:
+   python -m py_compile app.py
+   python -m py_compile exoplanets.py
+
+7. Start:
+   python app.py
+
+8. Open:
+   http://127.0.0.1:5001
+
+Do not commit your real MySQL password.
